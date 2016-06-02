@@ -1,9 +1,8 @@
 package com.greenriver.pc_repair;
 
+import android.app.FragmentManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,9 +11,33 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+
+import com.greenriver.pc_repair.Fragment.CustomerInfo_Frag;
+import com.greenriver.pc_repair.Fragment.Payment_Frag;
+import com.greenriver.pc_repair.Fragment.Policy1_Frag;
+import com.greenriver.pc_repair.Fragment.Policy2_Frag;
+import com.greenriver.pc_repair.Fragment.Review_Frag;
+import com.greenriver.pc_repair.Fragment.Warranty_Frag;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    //Fields
+    Button warrantyButton, policy1Button;
+    private String firstName = "first";
+    private String lastName = "last";
+    private String receipt = "12584aav";
+    public static double DEFAULT_PRICE = 0.0;
+    private String price = "50.00";
+    private String paymentMethod = "cash";
+    private String phoneNumber = "123456789";
+    private String email = "email@mail.com";
+    private String studentID = "110111011";
+    private String problem = "Problem Description";
+    private String issueType = "[none]";
+    private Bitmap signature;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +46,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -40,6 +56,14 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        price = "" + DEFAULT_PRICE;
+        FragmentManager fn = getFragmentManager();
+        fn.beginTransaction().replace(R.id.content_frame, new Warranty_Frag()).commit();
+
+
+
+
     }
 
     @Override
@@ -77,25 +101,63 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
+        //Create a fragment manager to manage the fragments change.
+        FragmentManager fn = getFragmentManager();
+
+
         int id = item.getItemId();
 
         if (id == R.id.nav_warranty) {
-            // Handle the camera action
+            fn.beginTransaction().replace(R.id.content_frame, new Warranty_Frag()).commit();
         } else if (id == R.id.nav_policy1) {
-
+            fn.beginTransaction().replace(R.id.content_frame, new Policy1_Frag()).commit();
         } else if (id == R.id.nav_policy2) {
-
+            fn.beginTransaction().replace(R.id.content_frame, new Policy2_Frag()).commit();
         } else if (id == R.id.nav_costumer) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            fn.beginTransaction().replace(R.id.content_frame, new CustomerInfo_Frag()).commit();
+        } else if (id == R.id.nav_payment) {
+            fn.beginTransaction().replace(R.id.content_frame, new Payment_Frag()).commit();
+        } else if (id == R.id.nav_review) {
+            fn.beginTransaction().replace(R.id.content_frame, new Review_Frag()).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void setImageData(Bitmap bm) {
+        this.signature = bm;
+    }
+
+    public Bitmap getImageData() {
+        return this.signature;
+    }
+
+    public void setPaymentData(String s) {
+        String[] arr = s.split(":://");
+        this.receipt = arr[0];
+        this.price = arr[1];
+        this.paymentMethod = arr[2];
+    }
+
+    public void setCustomerInfoData(String s) {
+        String[] arr = s.split(":://");
+        String[] arr2 = arr[0].split(" ");
+        this.firstName = arr2[0];
+        this.lastName = arr2[1];
+        this.phoneNumber = arr[1];
+        this.email = arr[2];
+        this.studentID = arr[3];
+        this.issueType = arr[4];
+        this.problem = arr[5];
+    }
+
+    public String getStringData() {
+        return (this.firstName + " " + this.lastName + ":://" + this.receipt + ":://" + this.price
+                + ":://" + this.paymentMethod + ":://" + this.phoneNumber
+                + ":://" + this.email + ":://" + this.studentID + ":://"
+                + this.issueType + "\n" + this.problem);
     }
 }
