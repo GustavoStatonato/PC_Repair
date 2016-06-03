@@ -30,7 +30,12 @@ import android.widget.Button;
 
 import com.greenriver.pc_repair.R;
 
-public class MyAlertDialogFragment extends DialogFragment implements View.OnClickListener{
+/**
+ * Created by Gustavo on 28/02/2016.
+ *Class used to alert when the manufacturer's warranty is valid, linked to Warranty_alert.xml.
+ **/
+
+ public class MyAlertDialogFragment extends DialogFragment implements View.OnClickListener{
     static MyAlertDialogFragment newInstance() {
         return new MyAlertDialogFragment();
     }

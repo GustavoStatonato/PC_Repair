@@ -35,12 +35,14 @@ import com.greenriver.pc_repair.MainActivity;
 import com.greenriver.pc_repair.R;
 
 /**
- * Created by GustavoB3 on 01/06/2016.
- */
+ * Created by Gustavo on 28/02/2016.
+ *Class used for creation manufacturer warranty screen, linked to Warranty_layout.xml.
+ **/
 public class Warranty_Frag extends Fragment {
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.warranty_layout, container, false);
 

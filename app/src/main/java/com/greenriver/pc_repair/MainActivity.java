@@ -20,6 +20,8 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
 
+
+
 package com.greenriver.pc_repair;
 
 import android.app.FragmentManager;
@@ -42,6 +44,11 @@ import com.greenriver.pc_repair.Fragment.Policy2_Frag;
 import com.greenriver.pc_repair.Fragment.Review_Frag;
 import com.greenriver.pc_repair.Fragment.Warranty_Frag;
 
+/**
+ * Created by Gustavo on 28/02/2016.
+ *
+ *Class used for data manipulation, contains methods set and get.
+ **/
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

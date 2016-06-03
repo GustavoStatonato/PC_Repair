@@ -42,8 +42,9 @@ import com.greenriver.pc_repair.R;
 import java.io.FileOutputStream;
 
 /**
- * Created by GustavoB3 on 01/06/2016.
- */
+ * Created by Gustavo on 28/02/2016.
+ * Class used for creation of payment data, linked to Payment_layout.xml.
+ **/
 public class Payment_Frag extends DialogFragment implements View.OnClickListener {
 
     private TextView price;

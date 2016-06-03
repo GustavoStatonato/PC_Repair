@@ -35,8 +35,9 @@ import com.greenriver.pc_repair.MainActivity;
 import com.greenriver.pc_repair.R;
 
 /**
- * Created by GustavoB3 on 01/06/2016.
- */
+ * Created by Gustavo on 28/02/2016.
+ *Class used for confirmation of policy 2, linked to Policy2_layout.xml.
+ **/
 public class Policy2_Frag extends Fragment {
     @Nullable
     @Override
