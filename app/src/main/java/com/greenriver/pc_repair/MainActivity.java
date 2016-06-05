@@ -46,8 +46,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -60,10 +58,6 @@ public class MainActivity extends AppCompatActivity
         price = "" + DEFAULT_PRICE;
         FragmentManager fn = getFragmentManager();
         fn.beginTransaction().replace(R.id.content_frame, new Warranty_Frag()).commit();
-
-
-
-
     }
 
     @Override
@@ -104,7 +98,6 @@ public class MainActivity extends AppCompatActivity
 
         //Create a fragment manager to manage the fragments change.
         FragmentManager fn = getFragmentManager();
-
 
         int id = item.getItemId();
 
