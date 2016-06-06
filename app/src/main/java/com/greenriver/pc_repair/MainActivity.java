@@ -127,7 +127,6 @@ public class MainActivity extends AppCompatActivity
         //Create a fragment manager to manage the fragments change.
         FragmentManager fn = getFragmentManager();
 
-
         int id = item.getItemId();
 
         if (id == R.id.nav_warranty) {
