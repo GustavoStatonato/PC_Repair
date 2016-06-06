@@ -31,7 +31,8 @@ import android.widget.Button;
 import com.greenriver.pc_repair.R;
 
 /**
- * Created by Gustavo on 28/02/2016.
+ * Created by Gustavo e Francisco on 28/02/2016.
+ *
  *Class used to alert when the manufacturer's warranty is valid, linked to Warranty_alert.xml.
  **/
 

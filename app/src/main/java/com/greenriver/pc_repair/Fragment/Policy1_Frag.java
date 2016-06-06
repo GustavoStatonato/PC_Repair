@@ -35,7 +35,8 @@ import com.greenriver.pc_repair.MainActivity;
 import com.greenriver.pc_repair.R;
 
 /**
- * Created by Gustavo on 28/02/2016.
+ * Created by Gustavo e Francisco on 28/02/2016.
+ *
  *Class used for confirmation of policy 1, linked to Policy1_layout.xml.
  **/
 public class Policy1_Frag extends Fragment {
@@ -44,20 +45,15 @@ public class Policy1_Frag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.policy1_layout, container, false);
-
-
-
         final CheckBox Check = (CheckBox) rootView.findViewById(R.id.checkedPolicy1);
         final Button btnNext = (Button) rootView.findViewById(R.id.nextButton);
         final MainActivity main = (MainActivity)getActivity();
-
 
         // predefines button as not enabled.
         btnNext.setEnabled(false);
 
         //hides Next button until warranty set to no
         btnNext.setVisibility(View.INVISIBLE);
-
 
         Check.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -21,7 +21,6 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 
-
 package com.greenriver.pc_repair;
 
 import android.app.FragmentManager;
@@ -45,7 +44,7 @@ import com.greenriver.pc_repair.Fragment.Review_Frag;
 import com.greenriver.pc_repair.Fragment.Warranty_Frag;
 
 /**
- * Created by Gustavo on 28/02/2016.
+ * Created by Gustavo e Francisco on 28/02/2016.
  *
  *Class used for data manipulation, contains methods set and get.
  **/
@@ -75,8 +74,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -89,10 +86,6 @@ public class MainActivity extends AppCompatActivity
         price = "" + DEFAULT_PRICE;
         FragmentManager fn = getFragmentManager();
         fn.beginTransaction().replace(R.id.content_frame, new Warranty_Frag()).commit();
-
-
-
-
     }
 
     @Override

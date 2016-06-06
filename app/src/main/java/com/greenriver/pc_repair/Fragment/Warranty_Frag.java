@@ -35,7 +35,8 @@ import com.greenriver.pc_repair.MainActivity;
 import com.greenriver.pc_repair.R;
 
 /**
- * Created by Gustavo on 28/02/2016.
+ * Created by Gustavo e Francisco on 28/02/2016.
+ *
  *Class used for creation manufacturer warranty screen, linked to Warranty_layout.xml.
  **/
 public class Warranty_Frag extends Fragment {
@@ -46,14 +47,10 @@ public class Warranty_Frag extends Fragment {
 
         View rootView = inflater.inflate(R.layout.warranty_layout, container, false);
 
-
-
         final CheckBox yesCheck = (CheckBox) rootView.findViewById(R.id.yesBox);
         final CheckBox noCheck = (CheckBox) rootView.findViewById(R.id.noBox);
         final Button btnNext = (Button) rootView.findViewById(R.id.nextButton);
-
         final MainActivity main = (MainActivity)getActivity();
-
 
         // predefines button as not enabled.
         btnNext.setEnabled(false);
@@ -78,7 +75,6 @@ public class Warranty_Frag extends Fragment {
                 MyAlertDialogFragment alertDialog = new MyAlertDialogFragment();
 
                 alertDialog.show(manager, "alertDialog");
-
             }
         });
 
@@ -105,7 +101,6 @@ public class Warranty_Frag extends Fragment {
                 }).commit();
             }
         });
-
         return rootView;
     }
 

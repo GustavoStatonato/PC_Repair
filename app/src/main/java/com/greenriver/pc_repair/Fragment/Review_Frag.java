@@ -38,22 +38,20 @@ import com.greenriver.pc_repair.MainActivity;
 import com.greenriver.pc_repair.R;
 
 /**
- * Created by Gustavo on 28/02/2016.
+ * Created by Gustavo e Francisco on 28/02/2016.
+ *
  *Class used for confirmation of data and send the data to
  *server and database,  linked to Review_layout.xml.
  **/
 public class Review_Frag extends Fragment implements View.OnClickListener {
     String[] array;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.review_layout, container, false);
-
         MainActivity main = (MainActivity)getActivity();
-
 
         //Grabs the data from main
         String test = main.getStringData();
@@ -99,7 +97,6 @@ public class Review_Frag extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-
         String url = "http://flonghini.greenrivertech.net/pcrepair/index.php?nameDisp="
                 + this.array[0] + "&receiptDisp=" + this.array[1] + "&priceDisp=" +
                 this.array[2] + "&paymentMethod=" + this.array[3] + "&phoneNumber=" +
@@ -108,11 +105,6 @@ public class Review_Frag extends Fragment implements View.OnClickListener {
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
-
-
-
-
-
     }
 
 }

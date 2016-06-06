@@ -42,7 +42,8 @@ import com.greenriver.pc_repair.R;
 import java.io.FileOutputStream;
 
 /**
- * Created by Gustavo on 28/02/2016.
+ * Created by Gustavo e Francisco on 28/02/2016.
+ *
  * Class used for creation of payment data, linked to Payment_layout.xml.
  **/
 public class Payment_Frag extends DialogFragment implements View.OnClickListener {
@@ -75,43 +76,21 @@ public class Payment_Frag extends DialogFragment implements View.OnClickListener
     //public static final int SPUNKYDISCOUNTALERT = 1; //class variable
     //SpunkyDiscountAlert discountSpunky = new SpunkyDiscountAlert(); //intialize call to spunkydiscountalert
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.payment_layout, container, false);
-
-         /* Initialize the Default Price
-         *  String.format("%.2f", String) makes the string display with
-         *  two decimal places as opposed to one.
-         */
-        /*
-        MainActivity a = (MainActivity)getActivity();
-        a.changeWarrantyButtonOff();
-        a.changePolicy1ButtonOff();
-        a.changePolicy2ButtonOff();
-        a.changeCustomerInfoButtonOff();
-        a.changePaymentButtonOn();
-        a.changeReviewButtonOff();
-        DEFAULT_PRICE = a.DEFAULT_PRICE;
-        */
-
         price = (TextView) rootView.findViewById(R.id.price);
         price.setText(String.format("%.2f", DEFAULT_PRICE));
-
         apply = (Button) rootView.findViewById(R.id.applyDiscount);
         apply.setOnClickListener(this);
         apply.setEnabled(false);
-
         next = (Button) rootView.findViewById(R.id.nextButton);
         next.setBackgroundColor(Color.rgb(108, 179, 59));
         next.setOnClickListener(this);
-
-
         spunkyDiscount = (CheckBox) rootView.findViewById(R.id.spunky_Discount);
         spunkyDiscount.setOnClickListener(this);
-
         cash = (CheckBox) rootView.findViewById(R.id.cashPayment);
         cash.setOnClickListener(this);
         check = (CheckBox) rootView.findViewById(R.id.checkPayment);
@@ -128,30 +107,14 @@ public class Payment_Frag extends DialogFragment implements View.OnClickListener
         // Cached Drawing for future export
         gv.setDrawingCacheEnabled(true);
 
-
         // Initialize button
         gestureSave = (Button) rootView.findViewById(R.id.btnSave);
         gestureSave.setOnClickListener(this);
         gestureClear = (Button) rootView.findViewById(R.id.btnClear);
         gestureClear.setOnClickListener(this);
 
-
         return rootView;
-
-
-
-
     }
-
- /* @Override
-    public void onResume() {
-        super.onResume();
-        MainActivity a = (MainActivity)getActivity();
-        DEFAULT_PRICE = a.DEFAULT_PRICE;
-
-        price = (TextView) v.findViewById(R.id.price);
-        price.setText(String.format("%.2f", DEFAULT_PRICE));
-    }*/
 
     /**
      * onClick Method:
@@ -237,12 +200,14 @@ public class Payment_Frag extends DialogFragment implements View.OnClickListener
                 //Empties the Cache
                 gv.setDrawingCacheEnabled(false);
 
-                //This section is for saving local copies
+                //This section is for saving local copies This case is not implemented
                 /*try {
                     gv.setDrawingCacheEnabled(false);
-                    Toast.makeText(getActivity(), "I'm in the save button", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(),
+                    "I'm in the save button", Toast.LENGTH_LONG).show();
                     fos = getActivity().openFileOutput(FILENAME, Context.MODE_PRIVATE);
-                    //compress to specified format (PNG), quality - which is ignored for PNG, and out stream
+                    //compress to specified format (PNG), quality -
+                    //which is ignored for PNG, and out stream
                     bm.compress(Bitmap.CompressFormat.PNG, 100, fos);
                     a.setImageData(bm);
                     fos.flush();
@@ -257,7 +222,8 @@ public class Payment_Frag extends DialogFragment implements View.OnClickListener
                         fos.close();
                         Toast.makeText(getActivity(), "Signature Saved.", Toast.LENGTH_LONG).show();
                     } catch (Throwable ignore) {
-                        Toast.makeText(getActivity(), "Oops! File didn't save.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(),
+                        "Oops! File didn't save.", Toast.LENGTH_LONG).show();
                     }
                 }*/
                 //resets the cache
@@ -275,15 +241,16 @@ public class Payment_Frag extends DialogFragment implements View.OnClickListener
             case R.id.nextButton:
                 main = (MainActivity)getActivity();
                 if (signed == true && payment == true && (receipt.getText() != null)) {
-                    main.setPaymentData(receipt.getText().toString() + ":://" + price.getText().toString() + ":://"
+                    main.setPaymentData(receipt.getText().toString() +
+                            ":://" + price.getText().toString() + ":://"
                            + paymentType);
-
-
                     FragmentManager fn = getFragmentManager();
                     fn.beginTransaction().replace(R.id.content_frame, new Review_Frag()).commit();
                 }
                 else {
-                    Toast.makeText(getActivity(), "You did not fill out the required information!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "" +
+                            "You did not fill out the required information!",
+                            Toast.LENGTH_LONG).show();
                 }
                 break;
         }

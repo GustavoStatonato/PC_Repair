@@ -39,13 +39,12 @@ import com.greenriver.pc_repair.MainActivity;
 import com.greenriver.pc_repair.R;
 
 /**
- * Created by Gustavo on 28/02/2016.
+ * Created by Gustavo e Francisco on 28/02/2016.
  *
  * Class used for creation of User and data linked to Customer_layout.xml.
  */
 
 public class CustomerInfo_Frag extends Fragment {
-
     private EditText firstName;
     private EditText lastName;
     private EditText email;
@@ -63,45 +62,23 @@ public class CustomerInfo_Frag extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.customer_layout, container, false);
 
         //defines button
         btnNext = (Button) rootView.findViewById(R.id.nextButton);
         btnNext.setBackgroundColor(Color.rgb(108, 179, 59));
-
-
         firstName = (EditText) rootView.findViewById(R.id.firstName);
-
         lastName = (EditText) rootView.findViewById(R.id.lastName);
-
         email = (EditText) rootView.findViewById(R.id.email);
-
         phone = (EditText) rootView.findViewById(R.id.phone);
-
         sid = (EditText) rootView.findViewById(R.id.sid);
-
         slow = (CheckBox) rootView.findViewById(R.id.slowBox);
-
         malware = (CheckBox) rootView.findViewById(R.id.malwareBox);
-
         hardware = (CheckBox) rootView.findViewById(R.id.hardwareBox);
-
         software= (CheckBox) rootView.findViewById(R.id.softwareBox);
-
         other= (CheckBox) rootView.findViewById(R.id.otherBox);
-
         description = (EditText) rootView.findViewById(R.id.issue);
 
-        /*
-        MainActivity main = (MainActivity)getActivity();
-        main.changeWarrantyButtonOff();
-        main.changePolicy1ButtonOff();
-        main.changePolicy2ButtonOff();
-        main.changeCustomerInfoButtonOn();
-        main.changePaymentButtonOff();
-        main.changeReviewButtonOff();
-        */
 
         if( firstName.getText().toString().length() == 0 )
             firstName.setError( "First name is required!" );
@@ -199,12 +176,16 @@ public class CustomerInfo_Frag extends Fragment {
                             }
 
 
-                            main.setCustomerInfoData(firstName.getText().toString() + " " + lastName.getText().toString()
-                                    + ":://" + phone.getText().toString() + ":://" + email.getText().toString()
-                                    + ":://" + sid.getText().toString() + ":://" + s + ":://" + description.getText().toString());
+                            main.setCustomerInfoData(firstName.getText().toString() +
+                                    " " + lastName.getText().toString()
+                                    + ":://" + phone.getText().toString() +
+                                    ":://" + email.getText().toString()
+                                    + ":://" + sid.getText().toString() +
+                                    ":://" + s + ":://" + description.getText().toString());
 
                             FragmentManager fn = getFragmentManager();
-                            fn.beginTransaction().replace(R.id.content_frame, new Payment_Frag()).commit();
+                            fn.beginTransaction().replace(
+                                    R.id.content_frame, new Payment_Frag()).commit();
                         }
                         else
                         {
@@ -223,10 +204,6 @@ public class CustomerInfo_Frag extends Fragment {
                 }
             }
         });
-
-
-
-
         return rootView;
     }
 
@@ -234,11 +211,5 @@ public class CustomerInfo_Frag extends Fragment {
     boolean isEmailValid(CharSequence email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
-
-
-
-
-
-
 }
 
